@@ -1,0 +1,131 @@
+[gd_scene load_steps=7 format=3 uid="uid://cw5mkn6n2fhti"]
+
+[ext_resource type="Script" uid="uid://bfmp5c8dscl2u" path="res://addons/windows-v2/custom_window.gd" id="1_x4kpa"]
+[ext_resource type="Theme" uid="uid://cu36rlh5ef5vv" path="res://addons/windows-v2/neon_theme.tres" id="2_s01oy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c10m"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.415686, 0.415686, 0.847059)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1fi5"]
+bg_color = Color(1, 1, 1, 0.0431373)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.526313, 0.526313, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s01oy"]
+bg_color = Color(1, 1, 1, 0.0823529)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.52549, 0.52549, 0.854902)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7m3x4"]
+bg_color = Color(1, 1, 1, 0.0431373)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.52549, 0.52549, 0.737255)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="WindowV2" type="Panel"]
+z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -131.0
+offset_right = 103.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 100)
+theme_override_styles/panel = SubResource("StyleBoxFlat_0c10m")
+script = ExtResource("1_x4kpa")
+
+[node name="title" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 3.0
+offset_right = -0.195007
+offset_bottom = 29.0
+grow_horizontal = 2
+pivot_offset = Vector2(148.524, 103.878)
+bbcode_enabled = true
+text = "[center][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="blur" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1779.0
+offset_top = -857.0
+offset_right = 98221.0
+offset_bottom = 99143.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.533333)
+
+[node name="disabled" type="Button" parent="blur"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="close" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_top = -47.0
+offset_right = 85.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_s01oy")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_v1fi5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s01oy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7m3x4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v1fi5")
+text = "Close"
+
+[connection signal="pressed" from="blur/disabled" to="." method="_on_disabled_pressed"]
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
